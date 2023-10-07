@@ -1,0 +1,4 @@
+myenv/
+app/__pycache__
+migrations/__pycache__
+mysite/__pycache__
