@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django.conf import settings
 
 # Create your models here.
 
@@ -22,3 +24,4 @@ class events(models.Model):
 class ticketSystem(models.Model):
     reservation = models.BigIntegerField()
     regular_ticket = models.BigIntegerField()
+    date_bought = models.DateTimeField(default=timezone.now)
