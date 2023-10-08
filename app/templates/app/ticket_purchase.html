@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>Ticket Number: {{ ticket.ticketNum }}</p> <!-- Display the ticket number -->
+    <!-- {{ form.as_p }} -->
+    {{ form.first_name.label_tag }} {{ form.first_name }}
+    {{ form.last_name.label_tag }} {{ form.last_name }}
+    {{ form.email.label_tag }} {{ form.email }}
+    <button type="submit">Purchase</button>
+</form>
+{% endblock %}
