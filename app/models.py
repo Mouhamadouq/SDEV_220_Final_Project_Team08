@@ -19,8 +19,6 @@ class ticket(models.Model):
         self.date_bought = timezone.now()
         self.save
 
-    def __init__(self):
-        return self.ticketID, self.ticketNum
     
 
 class events(models.Model):
