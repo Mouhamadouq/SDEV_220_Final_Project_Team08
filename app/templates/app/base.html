@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacers Ticket Hub</title>
+    <style>
+        .image-container img {
+            max-width: 20%; /* Ensure the image doesn't exceed its container */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="image-container">
+                <a href="{% url 'home' %}">
+                    <img src="./../../static/images/pacerslogo.jpg" alt="Pacers Logo">
+                </a>
+            </div>
+            <nav>
+                Navigation Links goes over here
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {% now "Y" %} Pacers Ticket Hub</p>
+        Contact Us: support@example.com<br>
+        Project Team: Mouhamadou, Nooreddin, and Rashmi Baral
+    </footer>
+</body>
+</html>

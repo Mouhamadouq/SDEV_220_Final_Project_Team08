@@ -13,6 +13,15 @@ class ticket(models.Model):
     ticketNum = models.BigIntegerField()
     ticket_price = models.DecimalField(max_digits=2, decimal_places= 2)
     Is_available = models.BigIntegerField()
+    date_bought = models.DateTimeField(default=timezone.now)
+
+    def purchase(self):
+        self.date_bought = timezone.now()
+        self.save
+
+    def __init__(self):
+        return self.ticketID, self.ticketNum
+    
 
 class events(models.Model):
     event_name = models.CharField(max_length=100)
@@ -21,7 +30,6 @@ class events(models.Model):
     date_ending = models.DateTimeField(null=True, blank=True)
     event_place = models.CharField(max_length=150)
 
-class ticketSystem(models.Model):
+class ticketSystem(ticket, models.Model):
     reservation = models.BigIntegerField()
     regular_ticket = models.BigIntegerField()
-    date_bought = models.DateTimeField(default=timezone.now)
