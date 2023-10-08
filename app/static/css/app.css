@@ -17,6 +17,33 @@ header {
     align-items: center;
 }
 
-.logo {
-    width: 10%;
+.container img {
+    padding-left: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+main {
+    /* max-width: 800px; */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.schedule th, .schedule td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.schedule th {
+    background-color: #f2f2f2;
+    font-weight: bold;
 }

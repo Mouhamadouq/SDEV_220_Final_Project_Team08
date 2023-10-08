@@ -5,24 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacers Ticket Hub</title>
-    <style>
+    <!-- <style>
         .image-container img {
             max-width: 20%; /* Ensure the image doesn't exceed its container */
             height: auto; /* Maintain aspect ratio */
         }
-    </style>
+    </style> -->
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="image-container">
-                <a href="{% url 'home' %}">
-                    <img src="./../../static/images/pacerslogo.jpg" alt="Pacers Logo">
-                </a>
-            </div>
+            <a href="{% url 'home' %}">
+                <img src="./../../static/images/pacerslogo.jpg" alt="Pacers Logo">
+            </a>
             <nav>
-                Navigation Links goes over here
+                <li><a href="{% url 'home' %}">Home</a></li>
             </nav>
         </div>
     </header>
