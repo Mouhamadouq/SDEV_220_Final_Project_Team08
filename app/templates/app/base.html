@@ -11,18 +11,22 @@
 <body>
     <header>
         <div class="container">
-            <a href="{% url 'home' %}">
-                <img src="./../../static/images/pacerslogo.jpg" alt="Pacers Logo">
-            </a>
-            <nav>
-            <style>
-                    .nav-link {
-                        color: red;
-                    }
-            </style>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'confirm_purchase' %}">Confirm Purchase</a></li>
-            </nav>
+            <div class="left-side">
+                <a href="{% url 'home' %}" class="logo">
+                    <img src="./../../static/images/pacerslogo.jpg" alt="Pacers Logo" class="left-image">
+                </a>
+            </div>
+            <div class="centered">
+                <h1 class="header-text"><a href="{% url 'home' %}">Pacers Ticket Hub</a></h1>
+            </div>
+            <div class="right-side">
+                <nav>
+                    <ul>
+                        <a href="{% url 'home' %}">Home</a><br>
+                        <a href="{% url 'enter_confirmation_id' %}">Confirm Purchase</a>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
     

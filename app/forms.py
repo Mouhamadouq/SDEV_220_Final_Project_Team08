@@ -8,7 +8,13 @@ class TicketPurchaseForm(forms.Form):
     ticket_type = forms.ChoiceField(choices=[])
 
     def __init__(self, *args, **kwargs):
-        # Pass the ticket types as choices when initializing the form
         ticket_choices = kwargs.pop('ticket_choices', [])
         super(TicketPurchaseForm, self).__init__(*args, **kwargs)
+        print("from form")
+        print(ticket_choices)
         self.fields['ticket_type'].choices = ticket_choices
+
+
+class ConfirmationIdForm(forms.Form):
+    confirmation_id = forms.CharField(max_length=36, label='Confirmation ID')
+

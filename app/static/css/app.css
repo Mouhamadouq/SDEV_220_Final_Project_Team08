@@ -4,35 +4,59 @@ body {
     color: #333;
 }
 
-/* Header styles */
 header {
-    font-family: "Lovers Quarrel", cursive, sans-serif;;
-    background-color: #7c7777;
+    font-family: "Playfair Display", sans-serif;;
+    background-color: #7674c7;
     padding: 10px 0;
 }
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
 }
 
-.container img {
-    padding-left: 10px;
-    width: 100px;
-    height: 100px;
+
+.left-side {
+    flex: 1;
 }
 
-.n_link{
+.centered {
+    flex: 1; 
+    text-align: center; 
+}
+
+.right-side {
+    flex: 1;
+    text-align: right; 
+}
+
+.left-image {
+    max-width: 100px;
+}
+
+.header-text {
+    margin: 0; 
+}
+
+.header-text a {
     color: black;
-    text-align: center;
-    text-decoration-color: #090909;
-    background-color: #333; 
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    
+    text-decoration: none; 
+}
+
+.header-text a:hover {
+    color: rgb(108, 73, 73);
+}
+
+nav ul a {
+    color: #333;
+    text-decoration: none; 
+    transition: color 0.3s; 
+    margin-right: 20px;
+}
+
+nav ul  a:hover {
+    color: #a50837; 
 }
 
 main {

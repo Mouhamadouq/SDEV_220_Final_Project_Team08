@@ -2,14 +2,19 @@
 {% block content %}
 <form method="post">
     {% csrf_token %}
-    <p><b>Event Name: </b>{{ event.event_name }}</p> 
-    <p>Event Date: {{ event.date }}</p> 
-    <p>Event Location: {{ event.event_place }}</p><br>
-    <p>Purchase Details:</p>
-    {{ form.first_name.label_tag }} {{ form.first_name }}<br>
-    {{ form.last_name.label_tag }} {{ form.last_name }}
-    {{ form.email.label_tag }} {{ form.email }}
-    {{ form.ticket_type.label_tag }} {{ form.ticket_type }}
-    <button type="submit">Purchase</button>
+    
+    <ul style="list-style-type: none;">
+        <li><b>Event Name:</b> {{ event.event_name }}</li>
+        <li><b>Event Date:</b> {{ event.date }}</li>
+        <li><b>Event Location:</b> {{ event.event_place }}</li>
+    </ul>
+    <div style="background-color: #f0f0f0; border: 1px solid #ddd; padding: 10px;">
+        <p><b>Purchase Now:</b></p>
+        <label style="margin-right: 10px;">{{ form.first_name.label_tag }}</label> {{ form.first_name }}<br>
+        <label style="margin-right: 10px;">{{ form.last_name.label_tag }}</label> {{ form.last_name }}<br>
+        <label style="margin-right: 45px;">{{ form.email.label_tag }}</label> {{ form.email }}<br>
+        <label style="margin-right: 5px;">{{ form.ticket_type.label_tag }}</label> {{ form.ticket_type }}<br><br>
+        <button type="submit">Purchase</button>        
+    </div>
 </form>
 {% endblock %}
