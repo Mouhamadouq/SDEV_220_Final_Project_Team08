@@ -83,3 +83,5 @@ class Order(models.Model):
 
     def __str__(self):
         return self.customer, self.ticket, self.status
+
+# create a confirmation order
