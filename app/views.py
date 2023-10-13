@@ -30,6 +30,6 @@ def purchase_ticket(request, ticket_id):
 
     return render(request, 'app/ticket_purchase.html', {'ticket': ticket1, 'form': form})
 
-
-
+def confirm_purchase(request):
+    return render(request, 'app/confirm_purchase.html',{})
 
