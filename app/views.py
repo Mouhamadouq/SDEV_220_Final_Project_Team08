@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 from app.forms import TicketPurchaseForm
-from .models import ticket, events
+from .models import ticket, event
 from django.utils import timezone
 
 # Create your views here.
@@ -11,7 +11,7 @@ def home(request):
 
 def purchase_ticket(request, ticket_id):
     print("rashmi baral")
-    # print(get_object_or_404(events, pk=1))
+    # print(get_object_or_404(event, pk=1))
     # try:
     #     ticket = Ticket.objects.get(ticketNum=ticket_id)
     # except Ticket.DoesNotExist:
