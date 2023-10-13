@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
@@ -83,3 +84,17 @@ class Order(models.Model):
 
     def __str__(self):
         return self.customer, self.ticket, self.status
+
+
+class ConfirmPurchase(models.Model):
+    event = models.ForeignKey(event, on_delete=models.CASCADE)
+    ticket = models.ForeignKey(ticket, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    confirmation_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    # Add other fields related to the purchase confirmation
+
+    def __str__(self):
+        return f'Purchase Confirmation for {self.first_name} {self.last_name}'

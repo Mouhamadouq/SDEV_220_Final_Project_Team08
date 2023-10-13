@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+  <h1>Confirmation Details</h1>
+  <p>Confirmation ID: {{ confirmation.confirmation_id }}</p>
+  <p>Event: {{ confirmation.event.event_name }}</p>
+  <p>Ticket Type: {{ confirmation.ticket.ticket_type }}</p>
+  <!-- Add other confirmation details here -->
+{% endblock %}
