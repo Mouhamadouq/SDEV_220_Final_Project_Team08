@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+#Create a class customer 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
@@ -17,15 +18,21 @@ class Customer(models.Model):
         return self.name
 
 
-
+# Create a class ticket to hold different ticket types and prices
 class ticket(models.Model):
     TYPE = (
         ('Reservation', 'Reservation'),
-        ('Regular ticket', 'Regular ticket'),
+        ('Balcony level', 'Balcony level'),
+        ('Club level', 'Club level'),
+        ('Lower level', 'Lower level'),
+        ('Suite', 'Suite'),
+        ('Courtside', 'Courtside'),
     )
     ticket_type = models.CharField(max_length=100, null=True, choices=TYPE)
     ticket_price = models.FloatField()
     date_created = models.DateTimeField(blank=True, null=True)
+
+    
 
     def Made(self):
         self.date_created = timezone.now()
@@ -34,7 +41,7 @@ class ticket(models.Model):
     def __str__(self):
         return self.ticket_type
 
-
+# Create a class event to hold the many events of the website
 class event(models.Model):
     EVENT = (
         ('Cleveland Cavaliers', 'Cleveland Cavaliers'),
@@ -57,7 +64,7 @@ class event(models.Model):
     def __str__(self):
         return self.event_name
 
-
+# Create a class order
 class Order(models.Model):
     STATUS = (
               ('Pending','Pending'),
