@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from app.forms import ConfirmationIdForm
 
 from app.forms import TicketPurchaseForm
-from .models import ConfirmPurchase, ticket, event, Order, Customer
+from .models import *
 from django.utils import timezone
 
 # Create your views here.
@@ -13,6 +13,18 @@ def home(request):
     events = event.objects.order_by("date")
     print(events)
     return render(request, 'app/home.html', {'events': events})
+
+def tickets(request):
+    tickets = ticket.objects.all()
+    return render(request, 'app/ticket.html', {'tickets': tickets})  
+
+def customer(request, pk):
+    customer = Customer.objects.get(id=pk)
+
+    orders = customer.order_set.all()
+
+    context = {'customer':customer, 'orders': orders}
+    return render(request, 'app/customer.html', context)
 
 
 def purchase_ticket(request, pk):
