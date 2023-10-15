@@ -1,4 +1,6 @@
+from django.forms import ModelForm
 from django import forms
+from .models import Order
 
 
 class TicketPurchaseForm(forms.Form):
@@ -13,6 +15,11 @@ class TicketPurchaseForm(forms.Form):
         print("from form")
         print(ticket_choices)
         self.fields['ticket_type'].choices = ticket_choices
+
+#class OrderForm(ModelForm):
+ #   class Meta:
+  #      model = Order
+   #     fields = '__all__'
 
 
 class ConfirmationIdForm(forms.Form):

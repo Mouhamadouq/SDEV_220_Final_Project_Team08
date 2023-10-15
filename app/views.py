@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from app.forms import ConfirmationIdForm
-
+from app.forms import *
+from django.http import HttpResponse
 from app.forms import TicketPurchaseForm
 from .models import *
 from django.utils import timezone
@@ -19,12 +19,12 @@ def tickets(request):
     return render(request, 'app/ticket.html', {'tickets': tickets})  
 
 def customer(request, pk):
-    customer = Customer.objects.get(id=pk)
-
+    customer = get_object_or_404(Customer, id=pk)
     orders = customer.order_set.all()
+    order_count = orders.count()
 
-    context = {'customer':customer, 'orders': orders}
-    return render(request, 'app/customer.html', context)
+    context = {'customer':customer, 'orders': orders, 'order_count':order_count}
+    return render(request, 'app/customer.html',context)
 
 
 def purchase_ticket(request, pk):
@@ -52,10 +52,11 @@ def purchase_ticket(request, pk):
                 last_name=last_name,
                 email=email,
             )
+
             purchase_confirmation.save()
 
-
-            return render(request, 'app/confirm_purchase.html', {"confirmation": purchase_confirmation})
+            context = {'form':form}
+            return render(request, 'app/confirm_purchase.html', {"confirmation": purchase_confirmation}, context)
 
         else:
             print("Form is not valid. Errors:")
@@ -65,8 +66,9 @@ def purchase_ticket(request, pk):
                     print(f"  {error}")
     else:
         form = TicketPurchaseForm(ticket_choices=ticket_choices)
-
     return render(request, 'app/ticket_purchase.html', {'event': selected_event, 'ticket_types': ticket_types, 'form': form})
+    
+
 
 def Order_details(request, pk):
     selected_customer = get_object_or_404(Order, pk=pk)
@@ -90,6 +92,9 @@ def Order_details(request, pk):
 
             )
             Order_confirmation.save()
+            form = OrderForm()
+            context = {'form':form}
+            return render(request, 'app/order_form.html', context)
 
 def confirmation_details(request):
     if request.method == 'POST':
