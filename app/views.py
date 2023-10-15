@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from app.forms import ConfirmationIdForm
 
 from app.forms import TicketPurchaseForm
-from .models import ConfirmPurchase, ticket, event
+from .models import ConfirmPurchase, ticket, event, Order, Customer
 from django.utils import timezone
 
 # Create your views here.
@@ -42,6 +42,7 @@ def purchase_ticket(request, pk):
             )
             purchase_confirmation.save()
 
+
             return render(request, 'app/confirm_purchase.html', {"confirmation": purchase_confirmation})
 
         else:
@@ -55,6 +56,28 @@ def purchase_ticket(request, pk):
 
     return render(request, 'app/ticket_purchase.html', {'event': selected_event, 'ticket_types': ticket_types, 'form': form})
 
+def Order_details(request, pk):
+    selected_customer = get_object_or_404(Order, pk=pk)
+    status = [
+        (Order.status, f"{Order.status}") for Order in status
+    ]
+    selected_event = get_object_or_404(event, pk=pk)
+    selected_customer = get_object_or_404(Customer, pk=pk)
+    ticket_type = [
+        (ticket.ticket_type, f"{ticket.ticket_type}") for ticket in ticket_type
+    ]
+    if request.method == 'POST':
+        model = Order(request.POST)
+        if model.is_valid():
+
+            Order_confirmation = Order(
+                customer=selected_customer,
+                event=selected_event,
+                ticket=ticket_type,
+                status=status,
+
+            )
+            Order_confirmation.save()
 
 def confirmation_details(request):
     if request.method == 'POST':

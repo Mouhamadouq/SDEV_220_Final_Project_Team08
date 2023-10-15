@@ -82,8 +82,6 @@ class Order(models.Model):
         self.date_bought = timezone.now()
         self.save()
 
-    def __str__(self):
-        return self.customer, self.ticket, self.status
 
 
 class ConfirmPurchase(models.Model):
